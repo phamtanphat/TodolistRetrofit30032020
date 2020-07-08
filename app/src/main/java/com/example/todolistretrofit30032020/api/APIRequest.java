@@ -1,7 +1,12 @@
 package com.example.todolistretrofit30032020.api;
 
 
+import com.example.todolistretrofit30032020.module.ResponseAPI;
+import com.example.todolistretrofit30032020.view.MainActivity;
+
+import io.reactivex.Flowable;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,7 +18,7 @@ public interface APIRequest {
 //    Call<Object> getData(@Path("page") String page);
 
     @GET("word.php")
-    Call<Object> getData(
+    Flowable<ResponseAPI> getWordFromPage(
             @Query("page") Integer page,
             @Query("numItems") Integer numItems);
 }
