@@ -31,11 +31,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                if (aBoolean){
-                    progressBar.setVisibility(View.VISIBLE);
-                }else{
-                    progressBar.setVisibility(View.GONE);
-                }
+                Log.d("BBB",aBoolean + "");
             }
         });
 
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getWordFromPageSucces().observe(this, new Observer<List<Word>>() {
             @Override
             public void onChanged(List<Word> words) {
-                Log.d("BBB",words.size() + "");
+//                Log.d("BBB",words.size() + "");
             }
         });
 

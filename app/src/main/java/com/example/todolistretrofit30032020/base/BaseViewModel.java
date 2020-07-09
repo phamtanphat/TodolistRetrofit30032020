@@ -1,27 +1,23 @@
 package com.example.todolistretrofit30032020.base;
 
-import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
 public abstract class BaseViewModel extends ViewModel implements LifecycleObserver {
 
-    protected abstract MutableLiveData<Boolean> mLoading();
+    private MutableLiveData<Boolean> mLoading = new MutableLiveData<>();
 
-    public void setLoading(Boolean loading){
-        mLoading().setValue(loading);
-    }
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    public LiveData<Boolean> getLoading(){
-        return  mLoading();
+
+    public void setLoading(Boolean b){
+        synchronized (mLoading){
+            mLoading.setValue(b);
+        }
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    public void clear(){
-        mLoading().setValue(null);
+    public MutableLiveData<Boolean> getLoading() {
+        return mLoading;
     }
+
 
 }
