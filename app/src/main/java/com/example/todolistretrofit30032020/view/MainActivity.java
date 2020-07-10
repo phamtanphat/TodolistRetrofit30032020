@@ -31,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                Log.d("BBB",aBoolean + "");
+                if (aBoolean){
+                    progressBar.setVisibility(View.VISIBLE);
+                }else {
+                    progressBar.setVisibility(View.GONE);
+                }
             }
         });
 
